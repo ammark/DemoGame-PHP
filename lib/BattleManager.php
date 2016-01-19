@@ -10,7 +10,7 @@ class BattleManager
      * @param $ship1Quantity
      * @param Ship $ship2
      * @param $ship2Quantity
-     * @return array
+     * @return BattleResult
      */
     public function battle(Ship $ship1, $ship1Quantity, Ship $ship2, $ship2Quantity)
     {
@@ -54,11 +54,12 @@ class BattleManager
             $usedJediPowers = $ship1UsedJediPowers;
         }
 
-        return array(
-            'winning_ship' => $winningShip,
-            'losing_ship' => $losingShip,
-            'used_jedi_powers' => $usedJediPowers,
-        );
+        return new BattleResult($usedJediPowers, $winningShip, $losingShip);
+//        return array(
+//            'winning_ship' => $winningShip,
+//            'losing_ship' => $losingShip,
+//            'used_jedi_powers' => $usedJediPowers,
+//        );
     }
 
     /**

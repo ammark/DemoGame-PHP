@@ -2,16 +2,35 @@
 
 class Ship
 {
+    /**
+     * @var
+     */
     private $name;
 
+    /**
+     * @var int
+     */
     private $weaponPower = 0;
 
+    /**
+     * @var int
+     */
     private $jediFactor = 0;
 
+    /**
+     * @var int
+     */
     private $strength = 0;
 
+    /**
+     * @var bool
+     */
     private $underRepair;
 
+    /**
+     * Ship constructor.
+     * @param $name
+     */
     public function __construct($name)
     {
         $this->name = $name;
@@ -19,21 +38,34 @@ class Ship
         $this->underRepair = mt_rand(1, 100) < 30;
     }
 
+    /**
+     * @return bool
+     */
     public function isFunctional()
     {
         return !$this->underRepair;
     }
 
+    /**
+     *
+     */
     public function sayHello()
     {
         echo 'Hello!';
     }
 
+    /**
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
-    
+
+    /**
+     * @param $number
+     * @throws Exception
+     */
     public function setStrength($number)
     {
         if (!is_numeric($number)) {
@@ -43,11 +75,18 @@ class Ship
         $this->strength = $number;
     }
 
+    /**
+     * @return int
+     */
     public function getStrength()
     {
         return $this->strength;
     }
 
+    /**
+     * @param bool $useShortFormat
+     * @return string
+     */
     public function getNameAndSpecs($useShortFormat = false)
     {
         if ($useShortFormat) {
@@ -69,6 +108,10 @@ class Ship
         }
     }
 
+    /**
+     * @param $givenShip
+     * @return bool
+     */
     public function doesGivenShipHaveMoreStrength($givenShip)
     {
         return $givenShip->strength > $this->strength;
