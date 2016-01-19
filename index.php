@@ -1,7 +1,9 @@
 <?php
-require __DIR__.'/functions.php';
+require __DIR__.'/bootstrap.php';
 
-$ships = get_ships();
+$shipLoader = new ShipLoader();
+
+$ships = $shipLoader->getShips();
 
 $errorMessage = '';
 if (isset($_GET['error'])) {
@@ -84,7 +86,7 @@ if (isset($_GET['error'])) {
             
             <div class="battle-box center-block border">
                 <div>
-                    <form method="POST" action="/battle.php">
+                    <form method="POST" action="battle.php">
                         <h2 class="text-center">The Mission</h2>
                         <input class="center-block form-control text-field" type="text" name="ship1_quantity" placeholder="Enter Number of Ships" />
                         <select class="center-block form-control btn drp-dwn-width btn-default btn-lg dropdown-toggle" name="ship1_name">
