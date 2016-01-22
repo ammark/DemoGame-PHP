@@ -5,6 +5,10 @@ class Ship
     /**
      * @var
      */
+    private $id;
+    /**
+     * @var
+     */
     private $name;
 
     /**
@@ -36,6 +40,22 @@ class Ship
         $this->name = $name;
         // randomly put this ship under repair
         $this->underRepair = mt_rand(1, 100) < 30;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param integer $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
