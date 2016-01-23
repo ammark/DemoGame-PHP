@@ -3,11 +3,11 @@
 class Ship
 {
     /**
-     * @var
+     * @var int
      */
     private $id;
     /**
-     * @var
+     * @var string
      */
     private $name;
 
