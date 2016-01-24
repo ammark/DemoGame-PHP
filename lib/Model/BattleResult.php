@@ -20,10 +20,10 @@ class BattleResult
     /**
      * BattleResult constructor.
      * @param $usedJediPower
-     * @param $winningShip
-     * @param $losingShip
+     * @param AbstractShip $winningShip
+     * @param AbstractShip $losingShip
      */
-    public function __construct($usedJediPower, Ship $winningShip = null, Ship $losingShip = null)
+    public function __construct($usedJediPower, AbstractShip $winningShip = null, AbstractShip $losingShip = null)
     {
         $this->usedJediPower = $usedJediPower;
         $this->winningShip = $winningShip;

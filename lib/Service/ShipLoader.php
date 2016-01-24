@@ -17,7 +17,7 @@ class ShipLoader
     }
 
     /**
-     * @return Ship[]
+     * @return AbstractShip[]
      * @throws Exception
      */
     public function getShips()
@@ -33,7 +33,7 @@ class ShipLoader
 
     /**
      * @param $id
-     * @return null|Ship
+     * @return null|AbstractShip
      */
     public function findOneById($id)
     {

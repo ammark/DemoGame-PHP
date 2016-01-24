@@ -6,7 +6,7 @@
  * Date: 2016-01-23
  * Time: 7:57 PM
  */
-class AbstractShip
+abstract class AbstractShip
 {
     /**
      * @var int
@@ -26,6 +26,12 @@ class AbstractShip
      * @var int
      */
     private $strength = 0;
+
+    abstract public function getJediFactor();
+
+    abstract public function isFunctional();
+
+    abstract public function getType();
 
     /**
      * Ship constructor.
