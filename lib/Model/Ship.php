@@ -176,4 +176,9 @@ class Ship
     {
         $this->jediFactor = $jediFactor;
     }
+
+    public function getType()
+    {
+        return 'Empire';
+    }
 }
