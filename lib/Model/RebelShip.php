@@ -6,7 +6,7 @@
  * Date: 2016-01-23
  * Time: 1:08 AM
  */
-class RebelShip extends Ship
+class RebelShip extends AbstractShip
 {
     public function getFavouriteJedi()
     {
@@ -39,5 +39,10 @@ class RebelShip extends Ship
         $val .= ' (Rebel) ';
 
         return $val;
+    }
+
+    public function getJediFactor()
+    {
+        return rand(10, 30);
     }
 }
