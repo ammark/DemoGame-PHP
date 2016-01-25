@@ -6,6 +6,8 @@ $container = new Container($configuration);
 $shipLoader = $container->getShipLoader();
 $ships = $shipLoader->getShips();
 
+$brokenShip = new BrokenShip('I am so broken');
+$ships[] = $brokenShip;
 $errorMessage = '';
 if (isset($_GET['error'])) {
     switch ($_GET['error']) {
@@ -104,7 +106,7 @@ if (isset($_GET['error'])) {
                         <p class="text-center">AGAINST</p>
                         <br>
                         <input class="center-block form-control text-field" type="text" name="ship2_quantity" placeholder="Enter Number of Ships" />
-                        <select class="center-block form-control btn drp-dwn-width btn-default btn-lg dropdown-toggle" name="ship2_id">
+                        <select class="center-block form-control btn drp-dwn-width btn-default btn-lg dropdown-toggle" name="ship2_id" title="">
                             <option value="">Choose a Ship</option>
                             <?php foreach ($ships as $ship): ?>
                                 <?php if ($ship->isFunctional()): ?>
