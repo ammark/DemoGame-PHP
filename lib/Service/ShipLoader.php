@@ -4,14 +4,7 @@ class ShipLoader
 {
     private $shipStorage;
 
-    private $dbDsn;
-
-    private $dbUser;
-
-    private $dbPass;
-
-
-    public function __construct(PdoShipStorage $shipStorage)
+    public function __construct(AbstractShipStorage $shipStorage)
     {
         $this->shipStorage = $shipStorage;
     }
