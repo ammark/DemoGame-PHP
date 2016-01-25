@@ -6,7 +6,7 @@
  * Date: 2016-01-24
  * Time: 7:21 PM
  */
-class PdoShipStorage
+class PdoShipStorage implements ShipStorageInterface
 {
     private $pdo;
 
