@@ -2,7 +2,7 @@
 
 class ShipLoader
 {
-    private $pdo;
+    private $shipStorage;
 
     private $dbDsn;
 
@@ -11,9 +11,9 @@ class ShipLoader
     private $dbPass;
 
 
-    public function __construct(PDO $pdo)
+    public function __construct(PdoShipStorage $shipStorage)
     {
-        $this->pdo = $pdo;
+        $this->shipStorage = $shipStorage;
     }
 
     /**
@@ -22,10 +22,11 @@ class ShipLoader
      */
     public function getShips()
     {
-        $shipsData = $this->queryForShips();
+        $shipsData = $this->shipStorage->fetchAllShipsData();
+
         $ships = array();
         foreach($shipsData as $shipData) {
-            $ships[] = $this->createShipFromDate($shipData);
+            $ships[] = $this->createShipFromData($shipData);
         }
 
         return $ships;
@@ -37,19 +38,12 @@ class ShipLoader
      */
     public function findOneById($id)
     {
-        $pdo = $this->getPDO();
-        $statement = $pdo->prepare('SELECT * FROM ship WHERE id = :id');
-        $statement->execute(array('id'=> $id));
-        $shipArray = $statement->fetch(PDO::FETCH_ASSOC);
+        $shipArray = $this->shipStorage->fetchSingleShipData($id);
 
-        if (!$shipArray) {
-            return null;
-        }
-
-        return $this->createShipFromDate($shipArray);
+        return $this->createShipFromData($shipArray);
     }
 
-    private function createShipFromDate(array $shipData)
+    private function createShipFromData(array $shipData)
     {
         if ($shipData['team'] == 'rebel') {
             $ship = new RebelShip($shipData['name']);
@@ -64,22 +58,4 @@ class ShipLoader
 
         return $ship;
     }
-
-    private function queryForShips()
-    {
-        $pdo = $this->getPDO();
-        $statement = $pdo->prepare('SELECT * FROM ship');
-        $statement->execute();
-        $shipsArray = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $shipsArray;
-    }
-
-    /**
-     * @return PDO
-     */
-    private function getPDO()
-    {
-        return $this->pdo;
-    }
-
 }
